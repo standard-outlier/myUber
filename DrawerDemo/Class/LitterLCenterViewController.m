@@ -20,9 +20,30 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     //设置打开抽屉模式
-    [self.mm_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModePanningCenterView];
+  
+
+    
 }
 
+
+//- (void)setleftNavItemImage{
+//
+//    
+//    CGSize size = CGSizeMake(25, 25);
+//    UIImage *image = [UIImage imageNamed:@"memu"];
+//    cell.imageView.image = image;
+//    CGRect rect = self.imageView.frame;
+//    rect.size = size;
+//    cell.imageView.frame = rect;
+//    
+//    //set graphices（待理解）
+//    UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
+//    CGRect imageRect = CGRectMake(0.0, 0.0, size.width, size.height);
+//    [image drawInRect:imageRect];
+//    cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//
+//}
 
 
 - (void)viewDidLoad {
@@ -30,17 +51,40 @@
         //self.title = @"Demo";
     [self.view setBackgroundColor:[UIColor whiteColor]];
     //1、设置导航栏的按钮
+
+    //self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"memu"] style:UIBarButtonItemStylePlain target:self action:@selector(leftBtn)];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"memu"] style:UIBarButtonItemStylePlain target:self action:@selector(leftBtn)];
+
+//    UIButton *lefbuttons = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
+//    UIImage *leftImage = [UIImage imageNamed:@"memu"];
+//    
+//    [lefbuttons setImage:leftImage forState:UIControlStateNormal];
+//    [lefbuttons addTarget:self action:@selector(leftBtn) forControlEvents:UIControlEventTouchDown];
+//    
+//    UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc]initWithCustomView:lefbuttons];
+    
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *image = [UIImage imageNamed:@"more"];
+    image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
+    [btn setImage:image forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(leftBtn) forControlEvents:UIControlEventTouchUpInside];
+    [btn sizeToFit];
+    UIView *containView = [[UIView alloc]initWithFrame:btn.bounds];
+    [containView addSubview:btn];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:containView];
+
+    
+    
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"more"] style:UIBarButtonItemStylePlain target:self action:@selector(rightBtn)];
-
     
-
     
     
     //框架作者提供了创建UIBarButtonItem的方法
-    //    self.navigationItem.leftBarButtonItem = [[MMDrawerBarButtonItem alloc]initWithTarget:self action:@selector(leftBtn)];
+        //self.navigationItem.leftBarButtonItem = [[MMDrawerBarButtonItem alloc]initWithTarget:self action:@selector(leftBtn)];
     //    self.navigationItem.rightBarButtonItem = [[MMDrawerBarButtonItem alloc]initWithTarget:self action:@selector(rightBtn)];
     
     

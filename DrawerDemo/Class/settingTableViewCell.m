@@ -29,7 +29,7 @@
             }
     return _itemSwitch;
 }
-//监听switch 的点击
+
 
 //初始化  右边的lable
 - (UILabel *)itemLable{
@@ -46,15 +46,13 @@
   settingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseID];
     if (cell == nil) {
         cell = [[settingTableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseID];
-        
     }
     cell.userInteractionEnabled = YES;
+    
     if ([model isKindOfClass:[itemSwitch class]]) {
-        //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults]
 
         cell.accessoryView = self.itemSwitch;
         cell.accessoryView.userInteractionEnabled = YES;
-        //self.itemSwitch.on  = [defaults boolForKey:self.key];
         
     }else if (model.option){
         
@@ -63,6 +61,20 @@
     }else if ([model isKindOfClass:[itemArrow class]]){
         
         cell.accessoryView = self.imageArrow;
+        
+        CGSize size = CGSizeMake(25, 25);
+        UIImage *image = [UIImage imageNamed:model.icon];
+        cell.imageView.image = image;
+        CGRect rect = self.imageView.frame;
+        rect.size = size;
+        cell.imageView.frame = rect;
+        
+        //set graphices（待理解）
+        UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
+        CGRect imageRect = CGRectMake(0.0, 0.0, size.width, size.height);
+        [image drawInRect:imageRect];
+        cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
         
         
     }else if ([model isKindOfClass:[itemLable class]]){
@@ -73,15 +85,6 @@
         cell.accessoryView = nil;
         
     }
-    
-
-    CGRect imageRect = self.imageView.frame;
-    imageRect.size = CGSizeMake(10, 10);
-    UIImage *image = [UIImage imageNamed:model.icon];
-
-    cell.imageView.image = image;
-    cell.imageView.frame = imageRect;
-        //调整image的大小
     
     cell.textLabel.text = model.title;
     cell.detailTextLabel.text = model.lableText;
