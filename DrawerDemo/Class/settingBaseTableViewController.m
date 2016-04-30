@@ -30,6 +30,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     UIColor *myColor = [UIColor colorWithRed:29/255 green:37/255 blue:46/255 alpha:1];
     [self.tableView setBackgroundColor:myColor];
 }
@@ -106,5 +108,8 @@
    
     
 }
+
+
+
 
 @end

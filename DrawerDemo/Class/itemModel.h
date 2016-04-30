@@ -8,12 +8,17 @@
 
 #import <Foundation/Foundation.h>
 typedef void (^cellOption)();
+typedef enum {
+    showSeparateLine,
+    dismisSeparateLine
+}Line;
 
 @interface itemModel : NSObject
 @property (nonatomic,copy) NSString *title;
 @property (nonatomic,copy) NSString *icon;
 @property (nonatomic,copy) cellOption option;
 @property (nonatomic,strong) NSString *lableText;
+@property (nonatomic,assign) Line separateLine;
 
 -(instancetype)initWithTitle:(NSString *)title andicon:(NSString *)icon;
 +(instancetype *)initWithTitle:(NSString *)title andicon:(NSString *)icon;

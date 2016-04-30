@@ -71,7 +71,6 @@
         
 }
 
-
 -(void)setBG{
     
     UIImageView *bg = [[UIImageView alloc]init];
@@ -126,7 +125,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 - (IBAction)switchToRegister:(id)sender {
     
     self.conformButton.titleLabel.text = @"Register";
@@ -137,15 +135,6 @@
     self.conformButton.titleLabel.text = @"Login";
 
 }
-
-
-
-//- (IBAction)login:(id)sender {
-//    
-//    [self setVC];
-//    [self presentViewController:self.drawerController animated:YES completion:nil];
-//    
-//}
 
 - (void)setVC {
     UIViewController *centerVC = [[LitterLCenterViewController alloc]init];
@@ -163,8 +152,8 @@
     self.drawerController.openDrawerGestureModeMask = MMOpenDrawerGestureModeAll;
     self.drawerController.closeDrawerGestureModeMask =MMCloseDrawerGestureModeAll;
     //5、设置左右两边抽屉显示的多少
-    self.drawerController.maximumLeftDrawerWidth = 200;
-    self.drawerController.maximumRightDrawerWidth = 200;
+    self.drawerController.maximumLeftDrawerWidth = 284;
+    self.drawerController.maximumRightDrawerWidth = 284;
     //6、初始化窗口、设置根控制器、显示窗口
 }
 
@@ -225,6 +214,10 @@
     
     [self setVC];
     [self presentViewController:self.drawerController animated:YES completion:nil];
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
 }
 @end
 

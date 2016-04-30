@@ -49,6 +49,7 @@
     }
     cell.userInteractionEnabled = YES;
     
+    
     if ([model isKindOfClass:[itemSwitch class]]) {
 
         cell.accessoryView = self.itemSwitch;
@@ -91,6 +92,12 @@
     cell.textLabel.textColor = [UIColor whiteColor];
     UIColor *myColor = [UIColor colorWithRed:39.0/255 green:47.0/255 blue:55.0/255 alpha:1];
     [cell setBackgroundColor:myColor];
+
+    //设置分割线
+    CGRect separateLineFrame = CGRectMake(0, 0, cell.frame.size.width, 1);
+    UIImageView *separateLine = [[UIImageView alloc]initWithFrame:separateLineFrame];
+    separateLine.image = [UIImage imageNamed:@"separateLine"];
+    [cell addSubview:separateLine];
     return cell;
     
 }
