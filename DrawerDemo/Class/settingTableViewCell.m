@@ -55,6 +55,24 @@
         cell.accessoryView = self.itemSwitch;
         cell.accessoryView.userInteractionEnabled = YES;
         
+        CGSize size = CGSizeMake(25, 25);
+        UIImage *image = [UIImage imageNamed:model.icon];
+        cell.imageView.image = image;
+        
+        
+        
+        CGRect rect = self.imageView.frame;
+        rect.size = size;
+        cell.imageView.frame = rect;
+        
+        //set graphices（待理解）
+        UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
+        CGRect imageRect = CGRectMake(0.0, 0.0, size.width, size.height);
+        [image drawInRect:imageRect];
+        cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+        cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        UIGraphicsEndImageContext();
+        
     }else if (model.option){
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;

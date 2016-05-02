@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "itemLable.h"
+#import "itemSwitch.h"
+#import "itemModel.h"
+#import "itemArrow.h"
 @interface settingBaseTableViewController : UITableViewController
 @property(nonatomic,strong) NSMutableArray *date;
 @end

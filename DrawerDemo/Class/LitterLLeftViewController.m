@@ -7,6 +7,8 @@
 #import "sectionModel.h"
 #import "myScheduleViewController.h"
 #import "myInfo.h"
+#import "myInfoViewController.h"
+#import "myWalletViewController.h"
 @interface LitterLLeftViewController ()
 
 @end
@@ -24,9 +26,10 @@
 }
 
 
+
 -(void)viewWillAppear:(BOOL)animated{
    
-    self.navigationController.navigationBarHidden = YES;
+    //self.navigationController.navigationBarHidden = YES;
     
 }
 - (void)setHeaderView{
@@ -44,11 +47,13 @@
 
 
 -(void)setSection1{
-    itemModel *item1 = [[itemArrow alloc]initWithTitle:@"My schedule" andicon:@"landTaxiHis" anddestVcClass:[ LitterLShowViewController class]];
-    itemModel *item2 = [[itemArrow alloc]initWithTitle:@"My wallet" andicon:@"wallate" anddestVcClass:[myScheduleViewController class]];
+    itemModel *item1 = [[itemArrow alloc]initWithTitle:@"My schedule" andicon:@"landTaxiHis" anddestVcClass:[ myScheduleViewController class]];
+    
+    itemModel *item2 = [[itemArrow alloc]initWithTitle:@"My wallet" andicon:@"wallate" anddestVcClass:[ myWalletViewController class]];
+    
     itemModel *item3 = [[itemArrow alloc]initWithTitle:@"Reservation" andicon:@"taxiLocation"];
     itemModel *item4 = [[itemArrow alloc]initWithTitle:@"Message" andicon:@"noti"];
-    itemModel *item5 = [[itemArrow alloc]initWithTitle:@"Install" andicon:@"setting"];
+    itemModel *item5 = [[itemArrow alloc]initWithTitle:@"Setting" andicon:@"setting"];
     itemModel *item6 = [[itemArrow alloc]initWithTitle:@"About" andicon:@"aboutUs"];
     itemModel *item7 = [[itemArrow alloc]initWithTitle:nil andicon:nil anddestVcClass:nil];
     sectionModel *section1 = [[sectionModel alloc]init];
@@ -98,4 +103,11 @@
 }
 
 
+
+
+- (IBAction)myImageClicked:(id)sender {
+    myInfoViewController *myinfoVC = [[myInfoViewController alloc]init];
+    myinfoVC.title = @"Personal";
+    [self.navigationController pushViewController:myinfoVC animated:YES];
+}
 @end

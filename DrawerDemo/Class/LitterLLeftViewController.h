@@ -5,5 +5,6 @@
 #import "settingTableViewCell.h"
 
 @interface LitterLLeftViewController : settingBaseTableViewController
+- (IBAction)myImageClicked:(id)sender;
 
 @end
